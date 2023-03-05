@@ -12,7 +12,7 @@ On the root of the repository run:
     python -m venv venv
     venv/scripts/activate
     python -m pip install --upgrade pip
-    pip install requirements.txt
+    pip install -r requirements.txt
     python manage.py makemigrations
     python manage.py migrate
     python manage.py runserver
