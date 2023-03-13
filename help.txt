@@ -1,2 +1,2 @@
 masking.mask_data methods:
-    'full','positional','right_to_left','left_to_right','email','cpf','credit_card'
+    'full','positional','right_to_left','left_to_right','email','cpf'
