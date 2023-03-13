@@ -1,12 +1,28 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from anonymizer import masking
+from .validators import validate_request
+from .dispatcher import dispatch
 
-@api_view(['POST'])
-def postData(request):
-    payload = request.data
-    database = payload['database']
-    fields = payload['fields']
-    payload['database'] = masking.mask_data(database, fields, method="cpf", masked=True, length=5, mask_result_lenght=True)
-    payload['message'] = "success"
-    return Response(payload)
+
+@api_view(['GET', 'POST'])
+def anonymize(request):
+    response = {}
+    match request.method:
+        case "GET":
+            response = {"Message": "Welcome to anonymizer!"}
+        case "POST":
+            request_validity = validate_request(request)
+            if request_validity == True:
+                response = dispatch(request)
+            elif request_validity == False:
+                response = {
+                    "Request Error": "The request media type is not 'application/json'"
+                }
+            else:
+                response = request_validity
+    return Response(response)
+
+
+@api_view(['GET'])
+def help(request):
+    return Response({"Help": "Anonymizer help tips"})
