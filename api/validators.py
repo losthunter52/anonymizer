@@ -3,7 +3,8 @@ from jsonschema.exceptions import ValidationError
 from jsonschema.exceptions import SchemaError
 
 avaible_tools = [
-    "masking"
+    "masking",
+    "number_variation"
     ]
 
 avaible_methods = [

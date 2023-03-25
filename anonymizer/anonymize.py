@@ -1,5 +1,6 @@
 from .utils import data_tools
 from .lib import masking
+from .lib import number_variation
 
 
 def prepare(data, fields):
@@ -27,4 +28,17 @@ def mask(
         final_range,
         mask_result_lenght
     )
+
     return database
+
+def num_variation(
+    data,
+    fields
+):
+  database = number_variation.var_num_random_data(
+        data,
+        fields,
+        10,
+        6
+    )
+  return database

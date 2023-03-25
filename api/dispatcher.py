@@ -1,4 +1,4 @@
-from anonymizer.anonymize import prepare, mask
+from anonymizer.anonymize import prepare, mask,num_variation
 
 
 def dispatch(request):
@@ -42,5 +42,10 @@ def dispatch(request):
                     initial_rage,
                     final_range,
                     mask_result_lenght
+                )
+            case "number_variation":
+                data = num_variation(
+                    data,
+                    fields
                 )
     return { "log": log, "database": data }
