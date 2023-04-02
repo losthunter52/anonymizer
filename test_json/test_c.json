@@ -1,0 +1,28 @@
+{
+    "params": [
+        {
+            "tool": "nulling_out",
+            "fields": [
+                "nome",
+                "sobrenome"
+            ]
+        }
+    ],
+    "database": [
+        {
+            "nome": "Wain",
+            "sobrenome": "Mitchard",
+            "idade": 34
+        },
+        {
+            "nome": "Mariam",
+            "sobrenome": "Backson",
+            "idade": 32
+        },
+        {
+            "nome": "Amalea",
+            "sobrenome": "Gambles",
+            "idade": 40
+        }
+    ]
+}

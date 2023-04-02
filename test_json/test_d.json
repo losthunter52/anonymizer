@@ -1,0 +1,33 @@
+{
+    "params": [
+        {
+            "tool": "perturbation",
+            "config": {
+                "method": "number_variation",
+                "variation": 1000,
+                "jump": 0.50,
+                "decimal_places": 2
+            },
+            "fields": [
+                "saldo"
+            ]
+        }
+    ],
+    "database": [
+        {
+            "nome": "Wain",
+            "sobrenome": "Mitchard",
+            "saldo": 15000
+        },
+        {
+            "nome": "Mariam",
+            "sobrenome": "Backson",
+            "saldo": 10000
+        },
+        {
+            "nome": "Amalea",
+            "sobrenome": "Gambles",
+            "saldo": 12000
+        }
+    ]
+}

@@ -1,2 +1,0 @@
-masking.mask_data methods:
-    'full','positional','right_to_left','left_to_right','email','cpf'

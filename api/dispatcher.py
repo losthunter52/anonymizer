@@ -1,51 +1,64 @@
-from anonymizer.anonymize import prepare, mask,num_variation
+from anonymizer.utils.data import Data
+from anonymizer.lib.data_masking import mask_data
+from anonymizer.lib.nulling_out import null_out
+from anonymizer.lib.perturbation import pertubate_data
+from .validators.validate import validate_request
+from .config import tools
+import json
+from copy import deepcopy
+
+def process_data(request):
+    validate = validate_request(request)
+    if validate == True:
+        return dispatch(request)
+    else:
+        return validate
 
 
 def dispatch(request):
     log = []
     payload = request.data
-    database = payload['database']
-    data = database
+    data = Data(payload['database'])
     for param in payload['params']:
-        prepare_database = prepare(data, param['fields'])
-        data = prepare_database['database']
-        fields = prepare_database['fields']
-        if prepare_database['log'] != "":
-            log.append(prepare_database['log'])
-        match param['tool']:
-            case "masking":
-                method="full"
-                length=0
-                masked=False
-                initial_rage=0
-                final_range=0
-                mask_result_lenght=False
-                if 'config' in param:
-                    if 'method' in param['config']:
-                        method = param['config']['method']
-                    if 'length' in param['config']:
-                        length = param['config']['length']
-                    if 'masked' in param['config']:
-                        masked = param['config']['masked']
-                    if 'initial_rage' in param['config']:
-                        initial_rage = param['config']['initial_rage']
-                    if 'final_range' in param['config']:
-                        final_range = param['config']['final_range']
-                    if 'mask_result_lenght' in param['config']:
-                        mask_result_lenght = param['config']['mask_result_lenght']
-                data = mask(
-                    data,
-                    fields,
-                    method,
-                    length,
-                    masked,
-                    initial_rage,
-                    final_range,
-                    mask_result_lenght
-                )
-            case "number_variation":
-                data = num_variation(
-                    data,
-                    fields
-                )
-    return { "log": log, "database": data }
+        tool = param['tool']
+        arguments = deepcopy(tools[tool])
+        fields = param['fields']
+        if 'config' in param:
+            for parameter in param['config']:
+                if parameter in arguments:
+                    arguments[parameter]['default'] = param['config'][parameter]
+        caller(arguments, tool, fields, data)
+    log = data.get_log()
+    response = {}
+    if log:
+        response.update({'log':log})
+    database = json.loads(json.dumps(data.get_database(), sort_keys=True))
+    response.update({'database':database})
+    return response
+
+def caller(arguments, tool, fields, data):
+    match tool:
+        case "masking":
+            data.set_string_fields(fields)
+            data = mask_data(
+                data,
+                arguments['method']['default'],
+                arguments['length']['default'],
+                arguments['masked']['default'],
+                arguments['initial_rage']['default'],
+                arguments['final_range']['default'],
+                arguments['mask_result_lenght']['default']
+            )
+        case "nulling_out":
+            data.prepare_fields(fields)
+            data = null_out(data)
+        case "perturbation":
+            data.set_numeric_fields(fields)
+            data = pertubate_data(
+                data,
+                arguments['method']['default'],
+                arguments['variation']['default'],
+                arguments['jump']['default'],
+                arguments['decimal_places']['default'],
+            )
+    return data

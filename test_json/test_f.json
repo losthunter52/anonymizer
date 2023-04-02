@@ -1,0 +1,62 @@
+{
+    "params": [
+        {
+            "tool": "nulling_out",
+            "fields": [
+                "nome"
+            ]
+        },
+        {
+            "tool": "masking",
+            "config": {
+                "method": "left_to_right",
+                "length": 5,
+                "mask_result_lenght": true
+            },
+            "fields": [
+                "sobrenome"
+            ]
+        },
+        {
+            "tool": "masking",
+            "config": {
+                "method": "email"
+            },
+            "fields": [
+                "email"
+            ]
+        },
+        {
+            "tool": "perturbation",
+            "config": {
+                "method": "random_number_variation",
+                "variation": 1000,
+                "jump": 0.50,
+                "decimal_places": 2
+            },
+            "fields": [
+                "saldo"
+            ]
+        }
+    ],
+    "database": [
+        {
+            "nome": "Wain",
+            "sobrenome": "Mitchard",
+            "email": "Wain@gmail.com",
+            "saldo": 15000
+        },
+        {
+            "nome": "Mariam",
+            "sobrenome": "Backson",
+            "email": "Mariam@gmail.com",
+            "saldo": 10000
+        },
+        {
+            "nome": "Amalea",
+            "sobrenome": "Gambles",
+            "email": "Amalea@gmail.com",
+            "saldo": 12000
+        }
+    ]
+}
