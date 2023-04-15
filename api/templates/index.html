@@ -1,38 +1,1145 @@
+{% load static %}
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="./index.css">
-    <style>
-      .topbar {
-        display: none;
-      }
-    </style>
-  </head>
 
-  <body>
-    <div id="swagger-ui"></div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/3.19.5/swagger-ui-bundle.js"> </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/3.19.5/swagger-ui-standalone-preset.js"> </script>
-    <script src="./openapi.js"> </script>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/3.19.5/swagger-ui.css">
+  <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+</head>
+
+<body>
+  <div id="swagger-ui">
+    <div class="swagger-ui">
+      <div class="information-container wrapper">
+        <section class="block col-12">
+          <div class="info">
+            <hgroup class="main">
+              <h2 class="title">Anonymizer REST API<span><small>
+                    <pre class="version">0.3</pre>
+            </hgroup>
+          </div>
+        </section>
+      </div>
+      <div class="wrapper">
+        <div class="opblock-tag-section is-open">
+          <h4 class="opblock-tag no-desc" onClick="showClass('masking')">
+            <a class="nostyle">Data Masking</a>
+          </h4>
+          <div class="opblock-tag-section is-open masking" style="display: block;">
+            <div class="opblock opblock-post is-open">
+              <div class="opblock-summary opblock-summary-post" onClick="showId('masking-full')"><span
+                  class="opblock-summary-method">METHOD</span>
+                <span class="opblock-summary-path">
+                  <a class="nostyle">Full</a>
+                </span>
+              </div>
+              <div class="opblock-body" id="masking-full" style="display: none;">
+                <div class="opblock-section">
+                  <div class="opblock-section-header">
+                    <div class="tab-header">
+                      <div class="tab-item active">
+                        <h4 class="opblock-title"><span>Description</span></h4>
+                      </div>
+                    </div>
+                    <div class="try-out"><button class="btn try-out__btn">Run</button></div>
+                  </div>
+                  <div class="table-container">
+                    <p>The "full" method returns an anonymized dataset, transforming the database fields information into an asterisk.</p>
+                  </div>
+                </div>
+                <div class="opblock-section-header">
+                  <h4 class="opblock-title parameter__name undefined">Request body</h4>
+                </div>
+                <div class="opblock-description-wrapper">
+                  <pre class="body-param__example microlight">
+                    
+{
+    "params": [
+        {
+            "tool": "masking",
+            "fields": [
+                "name",
+                "surname"
+            ]
+        }
+    ],
+    "database": [
+        {
+            "name": "Wain",
+            "surname": "Mitchard"
+        },
+        {
+            "name": "Mariam",
+            "surname": "Backson"
+        },
+        {
+            "name": "Amalea",
+            "surname": "Gambles"
+        }
+    ]
+}
+                  </pre>
+                </div>
+                <div class="opblock-section-header">
+                  <h4 class="opblock-title parameter__name undefined">Response</h4>
+                </div>
+                <div class="opblock-description-wrapper">
+                  <pre class="body-param__example microlight">
+
+{
+    "database": [
+        {
+            "name": "*",
+            "surname": "*"
+        },
+        {
+            "name": "*",
+            "surname": "*"
+        },
+        {
+            "name": "*",
+            "surname": "*"
+        }
+    ]
+}
+                  </pre>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="opblock-tag-section is-open masking" style="display: block;">
+            <div class="opblock opblock-post is-open">
+              <div class="opblock-summary opblock-summary-post" onClick="showId('masking-cpf')"><span
+                  class="opblock-summary-method">METHOD</span>
+                <span class="opblock-summary-path">
+                  <a class="nostyle">CPF</a>
+                </span>
+              </div>
+              <div class="opblock-body" id="masking-cpf" style="display: none;">
+                <div class="opblock-section">
+                  <div class="opblock-section-header">
+                    <div class="tab-header">
+                      <div class="tab-item active">
+                        <h4 class="opblock-title"><span>Description</span></h4>
+                      </div>
+                    </div>
+                    <div class="try-out"><button class="btn try-out__btn">Run</button></div>
+                  </div>
+                  <div class="table-container">
+                    <p>Description Here</p>
+                  </div>
+                </div>
+                <div class="opblock-section-header">
+                  <h4 class="opblock-title parameter__name undefined">Request body</h4>
+                </div>
+                <div class="opblock-description-wrapper">
+                  <pre class="body-param__example microlight">
+
+    {
+    "category": "sports",
+    "category": "sports"
+    }
+                  </pre>
+                </div>
+                <div class="opblock-section-header">
+                  <h4 class="opblock-title parameter__name undefined">Response</h4>
+                </div>
+                <div class="opblock-description-wrapper">
+                  <pre class="body-param__example microlight">
+
+    {
+    "category": "sports",
+    "category": "sports"
+    }
+                  </pre>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="opblock-tag-section is-open masking" style="display: block;">
+            <div class="opblock opblock-post is-open">
+              <div class="opblock-summary opblock-summary-post" onClick="showId('masking-rtl')"><span
+                  class="opblock-summary-method">METHOD</span>
+                <span class="opblock-summary-path">
+                  <a class="nostyle">Right To Left</a>
+                </span>
+              </div>
+              <div class="opblock-body" id="masking-rtl" style="display: none;">
+                <div class="opblock-section">
+                  <div class="opblock-section-header">
+                    <div class="tab-header">
+                      <div class="tab-item active">
+                        <h4 class="opblock-title"><span>Description</span></h4>
+                      </div>
+                    </div>
+                    <div class="try-out"><button class="btn try-out__btn">Run</button></div>
+                  </div>
+                  <div class="table-container">
+                    <p>Description Here</p>
+                  </div>
+                </div>
+                <div class="opblock-section-header">
+                  <h4 class="opblock-title parameter__name undefined">Request body</h4>
+                </div>
+                <div class="opblock-description-wrapper">
+                  <pre class="body-param__example microlight">
+
+    {
+    "category": "sports",
+    "category": "sports"
+    }
+                  </pre>
+                </div>
+                <div class="opblock-section-header">
+                  <h4 class="opblock-title parameter__name undefined">Response</h4>
+                </div>
+                <div class="opblock-description-wrapper">
+                  <pre class="body-param__example microlight">
+
+    {
+    "category": "sports",
+    "category": "sports"
+    }
+                  </pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="opblock-tag-section is-open">
+          <h4 class="opblock-tag no-desc" onClick="showClass('generalization')">
+            <a class="nostyle">Generalization</a>
+          </h4>
+          <div class="opblock-tag-section is-open generalization" style="display: none;">
+            <div class="opblock opblock-post is-open">
+              <div class="opblock-summary opblock-summary-post" onClick="showId('masking-full')"><span
+                  class="opblock-summary-method">METHOD</span>
+                <span class="opblock-summary-path">
+                  <a class="nostyle">Full</a>
+                </span>
+              </div>
+              <div class="opblock-body" id="masking-full" style="display: none;">
+                <div class="opblock-section">
+                  <div class="opblock-section-header">
+                    <div class="tab-header">
+                      <div class="tab-item active">
+                        <h4 class="opblock-title"><span>Description</span></h4>
+                      </div>
+                    </div>
+                    <div class="try-out"><button class="btn try-out__btn">Run</button></div>
+                  </div>
+                  <div class="table-container">
+                    <p>Description Here</p>
+                  </div>
+                </div>
+                <div class="opblock-section-header">
+                  <h4 class="opblock-title parameter__name undefined">Request body</h4>
+                </div>
+                <div class="opblock-description-wrapper">
+                  <pre class="body-param__example microlight">
+
+    {
+    "category": "sports",
+    "category": "sports"
+    }
+                  </pre>
+                </div>
+                <div class="opblock-section-header">
+                  <h4 class="opblock-title parameter__name undefined">Response</h4>
+                </div>
+                <div class="opblock-description-wrapper">
+                  <pre class="body-param__example microlight">
+
+    {
+    "category": "sports",
+    "category": "sports"
+    }
+                  </pre>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="opblock-tag-section is-open generalization" style="display: none;">
+            <div class="opblock opblock-post is-open">
+              <div class="opblock-summary opblock-summary-post" onClick="showId('masking-cpf')"><span
+                  class="opblock-summary-method">METHOD</span>
+                <span class="opblock-summary-path">
+                  <a class="nostyle">CPF</a>
+                </span>
+              </div>
+              <div class="opblock-body" id="masking-cpf" style="display: none;">
+                <div class="opblock-section">
+                  <div class="opblock-section-header">
+                    <div class="tab-header">
+                      <div class="tab-item active">
+                        <h4 class="opblock-title"><span>Description</span></h4>
+                      </div>
+                    </div>
+                    <div class="try-out"><button class="btn try-out__btn">Run</button></div>
+                  </div>
+                  <div class="table-container">
+                    <p>Description Here</p>
+                  </div>
+                </div>
+                <div class="opblock-section-header">
+                  <h4 class="opblock-title parameter__name undefined">Request body</h4>
+                </div>
+                <div class="opblock-description-wrapper">
+                  <pre class="body-param__example microlight">
+
+    {
+    "category": "sports",
+    "category": "sports"
+    }
+                  </pre>
+                </div>
+                <div class="opblock-section-header">
+                  <h4 class="opblock-title parameter__name undefined">Response</h4>
+                </div>
+                <div class="opblock-description-wrapper">
+                  <pre class="body-param__example microlight">
+
+    {
+    "category": "sports",
+    "category": "sports"
+    }
+                  </pre>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="opblock-tag-section is-open generalization" style="display: none;">
+            <div class="opblock opblock-post is-open">
+              <div class="opblock-summary opblock-summary-post" onClick="showId('masking-rtl')"><span
+                  class="opblock-summary-method">METHOD</span>
+                <span class="opblock-summary-path">
+                  <a class="nostyle">Right To Left</a>
+                </span>
+              </div>
+              <div class="opblock-body" id="masking-rtl" style="display: none;">
+                <div class="opblock-section">
+                  <div class="opblock-section-header">
+                    <div class="tab-header">
+                      <div class="tab-item active">
+                        <h4 class="opblock-title"><span>Description</span></h4>
+                      </div>
+                    </div>
+                    <div class="try-out"><button class="btn try-out__btn">Run</button></div>
+                  </div>
+                  <div class="table-container">
+                    <p>Description Here</p>
+                  </div>
+                </div>
+                <div class="opblock-section-header">
+                  <h4 class="opblock-title parameter__name undefined">Request body</h4>
+                </div>
+                <div class="opblock-description-wrapper">
+                  <pre class="body-param__example microlight">
+
+    {
+    "category": "sports",
+    "category": "sports"
+    }
+                  </pre>
+                </div>
+                <div class="opblock-section-header">
+                  <h4 class="opblock-title parameter__name undefined">Response</h4>
+                </div>
+                <div class="opblock-description-wrapper">
+                  <pre class="body-param__example microlight">
+
+    {
+    "category": "sports",
+    "category": "sports"
+    }
+                  </pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="opblock-tag-section is-open">
+          <h4 class="opblock-tag no-desc" onClick="showClass('nullout')">
+            <a class="nostyle">Nulling Out</a>
+          </h4>
+          <div class="opblock-tag-section is-open nullout" style="display: none;">
+            <div class="opblock opblock-post is-open">
+              <div class="opblock-summary opblock-summary-post" onClick="showId('masking-full')"><span
+                  class="opblock-summary-method">METHOD</span>
+                <span class="opblock-summary-path">
+                  <a class="nostyle">Full</a>
+                </span>
+              </div>
+              <div class="opblock-body" id="masking-full" style="display: none;">
+                <div class="opblock-section">
+                  <div class="opblock-section-header">
+                    <div class="tab-header">
+                      <div class="tab-item active">
+                        <h4 class="opblock-title"><span>Description</span></h4>
+                      </div>
+                    </div>
+                    <div class="try-out"><button class="btn try-out__btn">Run</button></div>
+                  </div>
+                  <div class="table-container">
+                    <p>Description Here</p>
+                  </div>
+                </div>
+                <div class="opblock-section-header">
+                  <h4 class="opblock-title parameter__name undefined">Request body</h4>
+                </div>
+                <div class="opblock-description-wrapper">
+                  <pre class="body-param__example microlight">
+
+    {
+    "category": "sports",
+    "category": "sports"
+    }
+                  </pre>
+                </div>
+                <div class="opblock-section-header">
+                  <h4 class="opblock-title parameter__name undefined">Response</h4>
+                </div>
+                <div class="opblock-description-wrapper">
+                  <pre class="body-param__example microlight">
+
+    {
+    "category": "sports",
+    "category": "sports"
+    }
+                  </pre>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="opblock-tag-section is-open nullout" style="display: none;">
+            <div class="opblock opblock-post is-open">
+              <div class="opblock-summary opblock-summary-post" onClick="showId('masking-cpf')"><span
+                  class="opblock-summary-method">METHOD</span>
+                <span class="opblock-summary-path">
+                  <a class="nostyle">CPF</a>
+                </span>
+              </div>
+              <div class="opblock-body" id="masking-cpf" style="display: none;">
+                <div class="opblock-section">
+                  <div class="opblock-section-header">
+                    <div class="tab-header">
+                      <div class="tab-item active">
+                        <h4 class="opblock-title"><span>Description</span></h4>
+                      </div>
+                    </div>
+                    <div class="try-out"><button class="btn try-out__btn">Run</button></div>
+                  </div>
+                  <div class="table-container">
+                    <p>Description Here</p>
+                  </div>
+                </div>
+                <div class="opblock-section-header">
+                  <h4 class="opblock-title parameter__name undefined">Request body</h4>
+                </div>
+                <div class="opblock-description-wrapper">
+                  <pre class="body-param__example microlight">
+
+    {
+    "category": "sports",
+    "category": "sports"
+    }
+                  </pre>
+                </div>
+                <div class="opblock-section-header">
+                  <h4 class="opblock-title parameter__name undefined">Response</h4>
+                </div>
+                <div class="opblock-description-wrapper">
+                  <pre class="body-param__example microlight">
+
+    {
+    "category": "sports",
+    "category": "sports"
+    }
+                  </pre>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="opblock-tag-section is-open nullout" style="display: none;">
+            <div class="opblock opblock-post is-open">
+              <div class="opblock-summary opblock-summary-post" onClick="showId('masking-rtl')"><span
+                  class="opblock-summary-method">METHOD</span>
+                <span class="opblock-summary-path">
+                  <a class="nostyle">Right To Left</a>
+                </span>
+              </div>
+              <div class="opblock-body" id="masking-rtl" style="display: none;">
+                <div class="opblock-section">
+                  <div class="opblock-section-header">
+                    <div class="tab-header">
+                      <div class="tab-item active">
+                        <h4 class="opblock-title"><span>Description</span></h4>
+                      </div>
+                    </div>
+                    <div class="try-out"><button class="btn try-out__btn">Run</button></div>
+                  </div>
+                  <div class="table-container">
+                    <p>Description Here</p>
+                  </div>
+                </div>
+                <div class="opblock-section-header">
+                  <h4 class="opblock-title parameter__name undefined">Request body</h4>
+                </div>
+                <div class="opblock-description-wrapper">
+                  <pre class="body-param__example microlight">
+
+    {
+    "category": "sports",
+    "category": "sports"
+    }
+                  </pre>
+                </div>
+                <div class="opblock-section-header">
+                  <h4 class="opblock-title parameter__name undefined">Response</h4>
+                </div>
+                <div class="opblock-description-wrapper">
+                  <pre class="body-param__example microlight">
+
+    {
+    "category": "sports",
+    "category": "sports"
+    }
+                  </pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="opblock-tag-section is-open">
+          <h4 class="opblock-tag no-desc" onClick="showClass('perturbation')">
+            <a class="nostyle">Perturbation</a>
+          </h4>
+          <div class="opblock-tag-section is-open perturbation" style="display: none;">
+            <div class="opblock opblock-post is-open">
+              <div class="opblock-summary opblock-summary-post" onClick="showId('masking-full')"><span
+                  class="opblock-summary-method">METHOD</span>
+                <span class="opblock-summary-path">
+                  <a class="nostyle">Full</a>
+                </span>
+              </div>
+              <div class="opblock-body" id="masking-full" style="display: none;">
+                <div class="opblock-section">
+                  <div class="opblock-section-header">
+                    <div class="tab-header">
+                      <div class="tab-item active">
+                        <h4 class="opblock-title"><span>Description</span></h4>
+                      </div>
+                    </div>
+                    <div class="try-out"><button class="btn try-out__btn">Run</button></div>
+                  </div>
+                  <div class="table-container">
+                    <p>Description Here</p>
+                  </div>
+                </div>
+                <div class="opblock-section-header">
+                  <h4 class="opblock-title parameter__name undefined">Request body</h4>
+                </div>
+                <div class="opblock-description-wrapper">
+                  <pre class="body-param__example microlight">
+
+    {
+    "category": "sports",
+    "category": "sports"
+    }
+                  </pre>
+                </div>
+                <div class="opblock-section-header">
+                  <h4 class="opblock-title parameter__name undefined">Response</h4>
+                </div>
+                <div class="opblock-description-wrapper">
+                  <pre class="body-param__example microlight">
+
+    {
+    "category": "sports",
+    "category": "sports"
+    }
+                  </pre>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="opblock-tag-section is-open perturbation" style="display: none;">
+            <div class="opblock opblock-post is-open">
+              <div class="opblock-summary opblock-summary-post" onClick="showId('masking-cpf')"><span
+                  class="opblock-summary-method">METHOD</span>
+                <span class="opblock-summary-path">
+                  <a class="nostyle">CPF</a>
+                </span>
+              </div>
+              <div class="opblock-body" id="masking-cpf" style="display: none;">
+                <div class="opblock-section">
+                  <div class="opblock-section-header">
+                    <div class="tab-header">
+                      <div class="tab-item active">
+                        <h4 class="opblock-title"><span>Description</span></h4>
+                      </div>
+                    </div>
+                    <div class="try-out"><button class="btn try-out__btn">Run</button></div>
+                  </div>
+                  <div class="table-container">
+                    <p>Description Here</p>
+                  </div>
+                </div>
+                <div class="opblock-section-header">
+                  <h4 class="opblock-title parameter__name undefined">Request body</h4>
+                </div>
+                <div class="opblock-description-wrapper">
+                  <pre class="body-param__example microlight">
+
+    {
+    "category": "sports",
+    "category": "sports"
+    }
+                  </pre>
+                </div>
+                <div class="opblock-section-header">
+                  <h4 class="opblock-title parameter__name undefined">Response</h4>
+                </div>
+                <div class="opblock-description-wrapper">
+                  <pre class="body-param__example microlight">
+
+    {
+    "category": "sports",
+    "category": "sports"
+    }
+                  </pre>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="opblock-tag-section is-open perturbation" style="display: none;">
+            <div class="opblock opblock-post is-open">
+              <div class="opblock-summary opblock-summary-post" onClick="showId('masking-rtl')"><span
+                  class="opblock-summary-method">METHOD</span>
+                <span class="opblock-summary-path">
+                  <a class="nostyle">Right To Left</a>
+                </span>
+              </div>
+              <div class="opblock-body" id="masking-rtl" style="display: none;">
+                <div class="opblock-section">
+                  <div class="opblock-section-header">
+                    <div class="tab-header">
+                      <div class="tab-item active">
+                        <h4 class="opblock-title"><span>Description</span></h4>
+                      </div>
+                    </div>
+                    <div class="try-out"><button class="btn try-out__btn">Run</button></div>
+                  </div>
+                  <div class="table-container">
+                    <p>Description Here</p>
+                  </div>
+                </div>
+                <div class="opblock-section-header">
+                  <h4 class="opblock-title parameter__name undefined">Request body</h4>
+                </div>
+                <div class="opblock-description-wrapper">
+                  <pre class="body-param__example microlight">
+
+    {
+    "category": "sports",
+    "category": "sports"
+    }
+                  </pre>
+                </div>
+                <div class="opblock-section-header">
+                  <h4 class="opblock-title parameter__name undefined">Response</h4>
+                </div>
+                <div class="opblock-description-wrapper">
+                  <pre class="body-param__example microlight">
+
+    {
+    "category": "sports",
+    "category": "sports"
+    }
+                  </pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="opblock-tag-section is-open">
+          <h4 class="opblock-tag no-desc" onClick="showClass('pseudo')">
+            <a class="nostyle">Pseudonymization</a>
+          </h4>
+          <div class="opblock-tag-section is-open pseudo" style="display: none;">
+            <div class="opblock opblock-post is-open">
+              <div class="opblock-summary opblock-summary-post" onClick="showId('masking-full')"><span
+                  class="opblock-summary-method">METHOD</span>
+                <span class="opblock-summary-path">
+                  <a class="nostyle">Full</a>
+                </span>
+              </div>
+              <div class="opblock-body" id="masking-full" style="display: none;">
+                <div class="opblock-section">
+                  <div class="opblock-section-header">
+                    <div class="tab-header">
+                      <div class="tab-item active">
+                        <h4 class="opblock-title"><span>Description</span></h4>
+                      </div>
+                    </div>
+                    <div class="try-out"><button class="btn try-out__btn">Run</button></div>
+                  </div>
+                  <div class="table-container">
+                    <p>Description Here</p>
+                  </div>
+                </div>
+                <div class="opblock-section-header">
+                  <h4 class="opblock-title parameter__name undefined">Request body</h4>
+                </div>
+                <div class="opblock-description-wrapper">
+                  <pre class="body-param__example microlight">
+
+    {
+    "category": "sports",
+    "category": "sports"
+    }
+                  </pre>
+                </div>
+                <div class="opblock-section-header">
+                  <h4 class="opblock-title parameter__name undefined">Response</h4>
+                </div>
+                <div class="opblock-description-wrapper">
+                  <pre class="body-param__example microlight">
+
+    {
+    "category": "sports",
+    "category": "sports"
+    }
+                  </pre>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="opblock-tag-section is-open pseudo" style="display: none;">
+            <div class="opblock opblock-post is-open">
+              <div class="opblock-summary opblock-summary-post" onClick="showId('masking-cpf')"><span
+                  class="opblock-summary-method">METHOD</span>
+                <span class="opblock-summary-path">
+                  <a class="nostyle">CPF</a>
+                </span>
+              </div>
+              <div class="opblock-body" id="masking-cpf" style="display: none;">
+                <div class="opblock-section">
+                  <div class="opblock-section-header">
+                    <div class="tab-header">
+                      <div class="tab-item active">
+                        <h4 class="opblock-title"><span>Description</span></h4>
+                      </div>
+                    </div>
+                    <div class="try-out"><button class="btn try-out__btn">Run</button></div>
+                  </div>
+                  <div class="table-container">
+                    <p>Description Here</p>
+                  </div>
+                </div>
+                <div class="opblock-section-header">
+                  <h4 class="opblock-title parameter__name undefined">Request body</h4>
+                </div>
+                <div class="opblock-description-wrapper">
+                  <pre class="body-param__example microlight">
+
+    {
+    "category": "sports",
+    "category": "sports"
+    }
+                  </pre>
+                </div>
+                <div class="opblock-section-header">
+                  <h4 class="opblock-title parameter__name undefined">Response</h4>
+                </div>
+                <div class="opblock-description-wrapper">
+                  <pre class="body-param__example microlight">
+
+    {
+    "category": "sports",
+    "category": "sports"
+    }
+                  </pre>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="opblock-tag-section is-open pseudo" style="display: none;">
+            <div class="opblock opblock-post is-open">
+              <div class="opblock-summary opblock-summary-post" onClick="showId('masking-rtl')"><span
+                  class="opblock-summary-method">METHOD</span>
+                <span class="opblock-summary-path">
+                  <a class="nostyle">Right To Left</a>
+                </span>
+              </div>
+              <div class="opblock-body" id="masking-rtl" style="display: none;">
+                <div class="opblock-section">
+                  <div class="opblock-section-header">
+                    <div class="tab-header">
+                      <div class="tab-item active">
+                        <h4 class="opblock-title"><span>Description</span></h4>
+                      </div>
+                    </div>
+                    <div class="try-out"><button class="btn try-out__btn">Run</button></div>
+                  </div>
+                  <div class="table-container">
+                    <p>Description Here</p>
+                  </div>
+                </div>
+                <div class="opblock-section-header">
+                  <h4 class="opblock-title parameter__name undefined">Request body</h4>
+                </div>
+                <div class="opblock-description-wrapper">
+                  <pre class="body-param__example microlight">
+
+    {
+    "category": "sports",
+    "category": "sports"
+    }
+                  </pre>
+                </div>
+                <div class="opblock-section-header">
+                  <h4 class="opblock-title parameter__name undefined">Response</h4>
+                </div>
+                <div class="opblock-description-wrapper">
+                  <pre class="body-param__example microlight">
+
+    {
+    "category": "sports",
+    "category": "sports"
+    }
+                  </pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="opblock-tag-section is-open">
+          <h4 class="opblock-tag no-desc" onClick="showClass('swapping')">
+            <a class="nostyle">Swapping</a>
+          </h4>
+          <div class="opblock-tag-section is-open swapping" style="display: none;">
+            <div class="opblock opblock-post is-open">
+              <div class="opblock-summary opblock-summary-post" onClick="showId('masking-full')"><span
+                  class="opblock-summary-method">METHOD</span>
+                <span class="opblock-summary-path">
+                  <a class="nostyle">Full</a>
+                </span>
+              </div>
+              <div class="opblock-body" id="masking-full" style="display: none;">
+                <div class="opblock-section">
+                  <div class="opblock-section-header">
+                    <div class="tab-header">
+                      <div class="tab-item active">
+                        <h4 class="opblock-title"><span>Description</span></h4>
+                      </div>
+                    </div>
+                    <div class="try-out"><button class="btn try-out__btn">Run</button></div>
+                  </div>
+                  <div class="table-container">
+                    <p>Description Here</p>
+                  </div>
+                </div>
+                <div class="opblock-section-header">
+                  <h4 class="opblock-title parameter__name undefined">Request body</h4>
+                </div>
+                <div class="opblock-description-wrapper">
+                  <pre class="body-param__example microlight">
+
+    {
+    "category": "sports",
+    "category": "sports"
+    }
+                  </pre>
+                </div>
+                <div class="opblock-section-header">
+                  <h4 class="opblock-title parameter__name undefined">Response</h4>
+                </div>
+                <div class="opblock-description-wrapper">
+                  <pre class="body-param__example microlight">
+
+    {
+    "category": "sports",
+    "category": "sports"
+    }
+                  </pre>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="opblock-tag-section is-open swapping" style="display: none;">
+            <div class="opblock opblock-post is-open">
+              <div class="opblock-summary opblock-summary-post" onClick="showId('masking-cpf')"><span
+                  class="opblock-summary-method">METHOD</span>
+                <span class="opblock-summary-path">
+                  <a class="nostyle">CPF</a>
+                </span>
+              </div>
+              <div class="opblock-body" id="masking-cpf" style="display: none;">
+                <div class="opblock-section">
+                  <div class="opblock-section-header">
+                    <div class="tab-header">
+                      <div class="tab-item active">
+                        <h4 class="opblock-title"><span>Description</span></h4>
+                      </div>
+                    </div>
+                    <div class="try-out"><button class="btn try-out__btn">Run</button></div>
+                  </div>
+                  <div class="table-container">
+                    <p>Description Here</p>
+                  </div>
+                </div>
+                <div class="opblock-section-header">
+                  <h4 class="opblock-title parameter__name undefined">Request body</h4>
+                </div>
+                <div class="opblock-description-wrapper">
+                  <pre class="body-param__example microlight">
+
+    {
+    "category": "sports",
+    "category": "sports"
+    }
+                  </pre>
+                </div>
+                <div class="opblock-section-header">
+                  <h4 class="opblock-title parameter__name undefined">Response</h4>
+                </div>
+                <div class="opblock-description-wrapper">
+                  <pre class="body-param__example microlight">
+
+    {
+    "category": "sports",
+    "category": "sports"
+    }
+                  </pre>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="opblock-tag-section is-open swapping" style="display: none;">
+            <div class="opblock opblock-post is-open">
+              <div class="opblock-summary opblock-summary-post" onClick="showId('masking-rtl')"><span
+                  class="opblock-summary-method">METHOD</span>
+                <span class="opblock-summary-path">
+                  <a class="nostyle">Right To Left</a>
+                </span>
+              </div>
+              <div class="opblock-body" id="masking-rtl" style="display: none;">
+                <div class="opblock-section">
+                  <div class="opblock-section-header">
+                    <div class="tab-header">
+                      <div class="tab-item active">
+                        <h4 class="opblock-title"><span>Description</span></h4>
+                      </div>
+                    </div>
+                    <div class="try-out"><button class="btn try-out__btn">Run</button></div>
+                  </div>
+                  <div class="table-container">
+                    <p>Description Here</p>
+                  </div>
+                </div>
+                <div class="opblock-section-header">
+                  <h4 class="opblock-title parameter__name undefined">Request body</h4>
+                </div>
+                <div class="opblock-description-wrapper">
+                  <pre class="body-param__example microlight">
+
+    {
+    "category": "sports",
+    "category": "sports"
+    }
+                  </pre>
+                </div>
+                <div class="opblock-section-header">
+                  <h4 class="opblock-title parameter__name undefined">Response</h4>
+                </div>
+                <div class="opblock-description-wrapper">
+                  <pre class="body-param__example microlight">
+
+    {
+    "category": "sports",
+    "category": "sports"
+    }
+                  </pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="opblock-tag-section is-open">
+          <h4 class="opblock-tag no-desc" onClick="showClass('cripto')">
+            <a class="nostyle">Criptography</a>
+          </h4>
+          <div class="opblock-tag-section is-open cripto" style="display: none;">
+            <div class="opblock opblock-post is-open">
+              <div class="opblock-summary opblock-summary-post" onClick="showId('masking-full')"><span
+                  class="opblock-summary-method">METHOD</span>
+                <span class="opblock-summary-path">
+                  <a class="nostyle">Full</a>
+                </span>
+              </div>
+              <div class="opblock-body" id="masking-full" style="display: none;">
+                <div class="opblock-section">
+                  <div class="opblock-section-header">
+                    <div class="tab-header">
+                      <div class="tab-item active">
+                        <h4 class="opblock-title"><span>Description</span></h4>
+                      </div>
+                    </div>
+                    <div class="try-out"><button class="btn try-out__btn">Run</button></div>
+                  </div>
+                  <div class="table-container">
+                    <p>Description Here</p>
+                  </div>
+                </div>
+                <div class="opblock-section-header">
+                  <h4 class="opblock-title parameter__name undefined">Request body</h4>
+                </div>
+                <div class="opblock-description-wrapper">
+                  <pre class="body-param__example microlight">
+
+    {
+    "category": "sports",
+    "category": "sports"
+    }
+                  </pre>
+                </div>
+                <div class="opblock-section-header">
+                  <h4 class="opblock-title parameter__name undefined">Response</h4>
+                </div>
+                <div class="opblock-description-wrapper">
+                  <pre class="body-param__example microlight">
+
+    {
+    "category": "sports",
+    "category": "sports"
+    }
+                  </pre>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="opblock-tag-section is-open cripto" style="display: none;">
+            <div class="opblock opblock-post is-open">
+              <div class="opblock-summary opblock-summary-post" onClick="showId('masking-cpf')"><span
+                  class="opblock-summary-method">METHOD</span>
+                <span class="opblock-summary-path">
+                  <a class="nostyle">CPF</a>
+                </span>
+              </div>
+              <div class="opblock-body" id="masking-cpf" style="display: none;">
+                <div class="opblock-section">
+                  <div class="opblock-section-header">
+                    <div class="tab-header">
+                      <div class="tab-item active">
+                        <h4 class="opblock-title"><span>Description</span></h4>
+                      </div>
+                    </div>
+                    <div class="try-out"><button class="btn try-out__btn">Run</button></div>
+                  </div>
+                  <div class="table-container">
+                    <p>Description Here</p>
+                  </div>
+                </div>
+                <div class="opblock-section-header">
+                  <h4 class="opblock-title parameter__name undefined">Request body</h4>
+                </div>
+                <div class="opblock-description-wrapper">
+                  <pre class="body-param__example microlight">
+
+    {
+    "category": "sports",
+    "category": "sports"
+    }
+                  </pre>
+                </div>
+                <div class="opblock-section-header">
+                  <h4 class="opblock-title parameter__name undefined">Response</h4>
+                </div>
+                <div class="opblock-description-wrapper">
+                  <pre class="body-param__example microlight">
+
+    {
+    "category": "sports",
+    "category": "sports"
+    }
+                  </pre>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="opblock-tag-section is-open cripto" style="display: none;">
+            <div class="opblock opblock-post is-open">
+              <div class="opblock-summary opblock-summary-post" onClick="showId('masking-rtl')"><span
+                  class="opblock-summary-method">METHOD</span>
+                <span class="opblock-summary-path">
+                  <a class="nostyle">Right To Left</a>
+                </span>
+              </div>
+              <div class="opblock-body" id="masking-rtl" style="display: none;">
+                <div class="opblock-section">
+                  <div class="opblock-section-header">
+                    <div class="tab-header">
+                      <div class="tab-item active">
+                        <h4 class="opblock-title"><span>Description</span></h4>
+                      </div>
+                    </div>
+                    <div class="try-out"><button class="btn try-out__btn">Run</button></div>
+                  </div>
+                  <div class="table-container">
+                    <p>Description Here</p>
+                  </div>
+                </div>
+                <div class="opblock-section-header">
+                  <h4 class="opblock-title parameter__name undefined">Request body</h4>
+                </div>
+                <div class="opblock-description-wrapper">
+                  <pre class="body-param__example microlight">
+
+    {
+    "category": "sports",
+    "category": "sports"
+    }
+                  </pre>
+                </div>
+                <div class="opblock-section-header">
+                  <h4 class="opblock-title parameter__name undefined">Response</h4>
+                </div>
+                <div class="opblock-description-wrapper">
+                  <pre class="body-param__example microlight">
+
+    {
+    "category": "sports",
+    "category": "sports"
+    }
+                  </pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <script>
-      window.onload = function() {
-        const ui = SwaggerUIBundle({
-          spec: spec,
-          dom_id: '#swagger-ui',
-          deepLinking: true,
-          presets: [
-            SwaggerUIBundle.presets.apis,
-            SwaggerUIStandalonePreset
-          ],
-          plugins: [
-            SwaggerUIBundle.plugins.DownloadUrl
-          ],
-          layout: "StandaloneLayout"
-        })
-     
-        window.ui = ui
+      function showId(div) {
+        var x = document.getElementById(div);
+        if (x.style.display === "none") {
+          x.style.display = "block";
+        } else {
+          x.style.display = "none";
+        }
       }
-  </script>
-  <script src="./index.js"></script>
-  </body>
+      function showClass(div) {
+        var divsToHide = document.getElementsByClassName(div);
+        for (var i = 0; i < divsToHide.length; i++) {
+          if (divsToHide[i].style.display === "none") {
+            divsToHide[i].style.display = "block";
+          } else {
+            divsToHide[i].style.display = "none";
+          }
+        }
+      }
+    </script>
+</body>
+
 </html>

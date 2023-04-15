@@ -1,0 +1,25 @@
+{
+    "params": [
+        {
+            "tool": "masking",
+            "fields": [
+                "name",
+                "surname"
+            ]
+        }
+    ],
+    "database": [
+        {
+            "name": "Wain",
+            "surname": "Mitchard"
+        },
+        {
+            "name": "Mariam",
+            "surname": "Backson"
+        },
+        {
+            "name": "Amalea",
+            "surname": "Gambles"
+        }
+    ]
+}

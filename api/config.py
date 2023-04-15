@@ -45,5 +45,12 @@ tools = {
             "default": 0
         }
     },
-    'nulling_out': {}
+    'nulling_out': {},
+    'swapping': {
+        "method": {
+            "type": "string",
+                    "enum": ['random_substitution'],
+                    "default": 'random_substitution'
+        },
+    }
 }
