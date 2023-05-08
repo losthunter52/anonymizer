@@ -1,0 +1,25 @@
+{
+    "params": [
+        {
+            "tool": "hashing",
+            "fields": [
+                "nome",
+                "sobrenome"
+            ]
+        }
+    ],
+    "database": [
+        {
+            "nome": "Wain",
+            "sobrenome": "Mitchard"
+        },
+        {
+            "nome": "Mariam",
+            "sobrenome": "Backson"
+        },
+        {
+            "nome": "Amalea",
+            "sobrenome": "Gambles"
+        }
+    ]
+}

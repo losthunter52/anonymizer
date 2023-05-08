@@ -3,7 +3,7 @@ def mask_data(
     method = 'full',
     length = 0,
     masked = False,
-    initial_rage = 0,
+    initial_range = 0,
     final_range = 0,
     mask_result_lenght = False
 ):
@@ -17,7 +17,7 @@ def mask_data(
 
         case 'positional':
             data.update_database(positional(
-                database, fields, initial_rage, final_range))
+                database, fields, initial_range, final_range))
 
         case 'right_to_left':
             data.update_database(right_to_left(
@@ -47,12 +47,12 @@ def positional(database, fields, initial_range, final_range):
     for i in range(len(database)):
         for field in fields:
             field_len = len(str(database[i][field]))
-            if initial_range >= 1 and final_range < field_len:
+            if initial_range > 1 and final_range < field_len:
                 database[i][field] = "*" + \
-                    str(database[i][field])[initial_range:final_range] + "*"
+                    str(database[i][field])[initial_range-1:final_range] + "*"
             elif initial_range > 1:
                 database[i][field] = "*" + \
-                    str(database[i][field])[initial_range:]
+                    str(database[i][field])[initial_range-1:]
             elif final_range < field_len:
                 database[i][field] = str(database[i][field])[
                     :final_range] + "*"

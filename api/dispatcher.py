@@ -3,6 +3,7 @@ from anonymizer.lib.data_masking import mask_data
 from anonymizer.lib.nulling_out import null_out
 from anonymizer.lib.perturbation import pertubate_data
 from anonymizer.lib.swapping import swap_data
+from anonymizer.lib.hashing import hash_data
 from .validators.validate import validate_request
 from .config import tools
 import json
@@ -65,4 +66,7 @@ def caller(arguments, tool, fields, data):
         case "swapping":
             data.set_string_fields(fields)
             data = swap_data(data, arguments['method']['default'])
+        case "hashing":
+            data.set_string_fields(fields)
+            data = hash_data(data, arguments['method']['default'])
     return data

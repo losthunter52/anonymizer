@@ -72,8 +72,8 @@ class Data:
     def set_boolean_fields(self, fields):
         self.prepare_fields(fields)
         fields_with_warning = []
-        true_fields = ['true', 't', 'yes', 'y', 'v', 's', '1']
-        false_fields = ['false', 'f', 'no', 'n', 'f', '0']
+        true_fields = ['true', 't', 'yes', 'y', 'v', 's', '1', 1, True]
+        false_fields = ['false', 'f', 'no', 'n', 'f', '0', 0, False]
         for field in self.fields:
             error = False
             for i in range(len(self.database)):

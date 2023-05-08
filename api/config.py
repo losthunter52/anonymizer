@@ -52,5 +52,12 @@ tools = {
                     "enum": ['random_substitution'],
                     "default": 'random_substitution'
         },
-    }
+    },
+    'hashing': {
+        "method": {
+            "type": "string",
+                    "enum": ['md5', 'sha1', 'sha256'],
+                    "default": 'md5'
+        },
+    },
 }
