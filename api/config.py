@@ -45,5 +45,23 @@ tools = {
             "default": 0
         }
     },
+    'pseudonymization': {
+        "replacements": {
+          "type": "object",
+          "additionalProperties": {
+                  "type": "string"
+                 },
+            "default": []
+        },
+        "standard_value": {
+            "type": "string",
+            "default": []
+        },
+        "method": {
+            "type": "string",
+            "enum": ['full','single'],
+            "default": 'full'
+        }
+    },
     'nulling_out': {}
 }

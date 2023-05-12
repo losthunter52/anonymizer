@@ -2,6 +2,7 @@ from anonymizer.utils.data import Data
 from anonymizer.lib.data_masking import mask_data
 from anonymizer.lib.nulling_out import null_out
 from anonymizer.lib.perturbation import pertubate_data
+from anonymizer.lib.pseudonymization import Pseudoanonymizer
 from .validators.validate import validate_request
 from .config import tools
 import json
@@ -61,4 +62,12 @@ def caller(arguments, tool, fields, data):
                 arguments['jump']['default'],
                 arguments['decimal_places']['default'],
             )
+        case "pseudonymization":    
+            data.set_string_fields(fields)
+            anonymizer = Pseudoanonymizer(arguments['replacements']['default']
+                                          ,arguments['standard_value']['default'],
+                                          arguments['method']['default'])
+            data= anonymizer.pseudoanonymize(data)
+
+        
     return data
