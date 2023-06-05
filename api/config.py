@@ -60,4 +60,29 @@ tools = {
                     "default": 'md5'
         },
     },
+    'pseudonymization': {
+        "replacements": {
+          "type": "object",
+          "additionalProperties": {
+                  "type": "string"
+                 },
+            "default": []
+        },
+        "standard_value": {
+            "type": "string",
+            "default": "Object"
+        },
+        "method": {
+            "type": "string",
+            "enum": ['full','single'],
+            "default": 'full'
+        }
+    },
+    'encryption': {
+        "method": {
+            "type": "string",
+                    "enum": ['cryptocode', 'aes256'],
+                    "default": 'cryptocode'
+        },
+    },
 }

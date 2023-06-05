@@ -4,6 +4,8 @@ from anonymizer.lib.nulling_out import null_out
 from anonymizer.lib.perturbation import pertubate_data
 from anonymizer.lib.swapping import swap_data
 from anonymizer.lib.hashing import hash_data
+from anonymizer.lib.pseudonymization import psedoanonymize_data
+from anonymizer.lib.encryption import encript_data
 from .validators.validate import validate_request
 from .config import tools
 import json
@@ -69,4 +71,13 @@ def caller(arguments, tool, fields, data):
         case "hashing":
             data.set_string_fields(fields)
             data = hash_data(data, arguments['method']['default'])
+        case "pseudonymization":    
+            data.set_string_fields(fields)
+            data = psedoanonymize_data(data,
+                arguments['method']['default'],
+                arguments['standard_value']['default'],
+                arguments['replacements']['default'])
+        case "encryption":
+            data.set_string_fields(fields)
+            data = encript_data(data, arguments['method']['default'])
     return data

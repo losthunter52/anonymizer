@@ -1,0 +1,30 @@
+{
+    "params": [
+        {
+            "tool": "pseudonymization",
+            "config": {
+                "standard_value":"Pessoa"
+            },
+            "fields": [
+                "nome"
+            ]
+        }
+    ],
+    "database": [
+        {
+            "nome": "João",
+            "sobrenome": "Mitchard",
+            "email": "Wain@gmail.com"
+        },
+        {
+            "nome": "Mariam",
+            "sobrenome": "Backson",
+            "email": "Mariam@gmail.com"
+        },
+        {
+            "nome": "Pedro",
+            "sobrenome": "Gambles",
+            "email": "Amalea@gmail.com"
+        }
+    ]
+}
