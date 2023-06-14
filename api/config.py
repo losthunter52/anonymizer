@@ -65,8 +65,8 @@ tools = {
     'swapping': {
         "method": {
             "type": "string",
-                    "enum": ['random_substitution'],
-                    "default": 'random_substitution'
+                    "enum": ['random_substitution','group_random_substitution'],
+                    "default": 'group_random_substitution'
         },
     },
     'hashing': {
