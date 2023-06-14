@@ -29,7 +29,12 @@ tools = {
     'perturbation': {
         "method": {
             "type": "string",
-            "enum": ['number_variation', 'random_number_variation'],
+            "enum": ['number_variation',
+                     'random_number_variation', 
+                     'time_variation', 
+                     'random_time_variation',
+                     'date_variation', 
+                     'random_date_variation',],
             "default": 'number_variation'
         },
         "variation": {
@@ -43,6 +48,17 @@ tools = {
         "decimal_places": {
             "type": "integer",
             "default": 0
+        },
+        "format": {
+            "type": "string",
+            "enum": ['%d/%m/%Y',
+                     '%Y/%m/%d',
+                     '%d-%m-%Y',
+                     '%Y-%m-%d',
+                     '%H:%M:%S',
+                     '%M:%S',
+                     '%H:%M'],
+            "default": '%d/%m/%Y'
         }
     },
     'nulling_out': {},

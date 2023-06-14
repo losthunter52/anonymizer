@@ -1,0 +1,40 @@
+{
+    "params": [
+        {
+            "tool": "perturbation",
+            "config": {
+                "method": "random_date_variation",
+                "variation": 10,
+                "format": "%d/%m/%Y"
+            },
+            "fields": [
+                "date"
+            ]
+        },
+        {
+            "tool": "perturbation",
+            "config": {
+                "method": "random_time_variation",
+                "variation": 10,
+                "format": "%H:%M:%S"
+            },
+            "fields": [
+                "time"
+            ]
+        }
+    ],
+    "database": [
+        {
+            "date": "03/03/2023",
+            "time": "01:01:01"
+        },
+        {
+            "date": "04/04/2024",
+            "time": "02:02:02"
+        },
+        {
+            "date": "05/05/2025",
+            "time": "03:03:03"
+        }
+    ]
+}

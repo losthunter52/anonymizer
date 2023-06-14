@@ -57,13 +57,28 @@ def caller(arguments, tool, fields, data):
             data.prepare_fields(fields)
             data = null_out(data)
         case "perturbation":
-            data.set_numeric_fields(fields)
+            match arguments['method']['default']:
+                case "number_variation":
+                    data.set_numeric_fields(fields)
+                case "random_number_variation":
+                    data.set_numeric_fields(fields)
+                case "time_variation":
+                    data.set_string_fields(fields)
+                case "time_variation":
+                    data.set_string_fields(fields)
+                case "random_time_variation":
+                    data.set_string_fields(fields)
+                case "date_variation":
+                    data.set_string_fields(fields)
+                case "random_date_variation":
+                    data.set_string_fields(fields)
             data = pertubate_data(
                 data,
                 arguments['method']['default'],
                 arguments['variation']['default'],
                 arguments['jump']['default'],
                 arguments['decimal_places']['default'],
+                arguments['format']['default'],
             )
         case "swapping":
             data.set_string_fields(fields)
