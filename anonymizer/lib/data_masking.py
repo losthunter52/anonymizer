@@ -10,28 +10,26 @@ def mask_data(
     database = data.get_database()
     fields = data.get_fields()
 
-    match method:
+    if method == 'full':
+        data.update_database(full(database, fields))
 
-        case 'full':
-            data.update_database(full(database, fields))
+    if method == 'positional':
+        data.update_database(positional(
+            database, fields, initial_range, final_range))
 
-        case 'positional':
-            data.update_database(positional(
-                database, fields, initial_range, final_range))
+    if method == 'right_to_left':
+        data.update_database(right_to_left(
+            database, fields, length, mask_result_lenght))
 
-        case 'right_to_left':
-            data.update_database(right_to_left(
-                database, fields, length, mask_result_lenght))
+    if method == 'left_to_right':
+        data.update_database(lelf_to_right(
+            database, fields, length, mask_result_lenght))
 
-        case 'left_to_right':
-            data.update_database(lelf_to_right(
-                database, fields, length, mask_result_lenght))
+    if method == 'email':
+        data.update_database(email(database, fields))
 
-        case 'email':
-            data.update_database(email(database, fields))
-
-        case 'cpf':
-            data.update_database(cpf(database, fields, masked))
+    if method == 'cpf':
+        data.update_database(cpf(database, fields, masked))
 
     return data
 

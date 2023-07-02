@@ -12,21 +12,26 @@ def pertubate_data(
     database = data.get_database()
     fields = data.get_fields()
 
-    match method:
-        case "number_variation":
-            data.update_database(number_variation(
-                database, fields, variation, jump, decimal_places))
-        case "random_number_variation":
-            data.update_database(random_number_variation(
-                data, variation, jump, decimal_places))
-        case "time_variation":
-            data.update_database(time_variation(data, variation, format))
-        case "random_time_variation":
-            data.update_database(random_time_variation(data, variation, format))
-        case "date_variation":
-            data.update_database(date_variation(data, variation, format))
-        case "random_date_variation":
-            data.update_database(random_date_variation(data, variation, format))
+    if method == "number_variation":
+        data.update_database(number_variation(
+            database, fields, variation, jump, decimal_places))
+            
+    if method == "random_number_variation":
+        data.update_database(random_number_variation(
+            data, variation, jump, decimal_places))
+        
+    if method == "time_variation":
+        data.update_database(time_variation(data, variation, format))
+
+    if method == "random_time_variation":
+        data.update_database(random_time_variation(data, variation, format))
+
+    if method == "date_variation":
+        data.update_database(date_variation(data, variation, format))
+
+    if method == "random_date_variation":
+        data.update_database(random_date_variation(data, variation, format))
+
     return data
 
 

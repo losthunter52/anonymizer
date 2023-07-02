@@ -73,3 +73,14 @@ def schema_methods(tool):
         ]
     }
     return schema
+
+def result_schema():
+    schema = {
+        "title": "task",
+        "type": "object",
+        "properties": {
+            "task_id": {"type": "string"}
+        },
+        "required": ["task_id"]
+    }
+    return schema

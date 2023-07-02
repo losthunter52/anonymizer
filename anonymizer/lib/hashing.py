@@ -7,16 +7,14 @@ def hash_data(
     database = data.get_database()
     fields = data.get_fields()
 
-    match method:
+    if method == 'md5':
+        h = hashlib.md5()
 
-        case 'md5':
-            h = hashlib.md5()
+    if method == 'sha1':
+        h = hashlib.sha1()
 
-        case 'sha1':
-            h = hashlib.sha1()
-
-        case 'sha256':
-            h = hashlib.sha256()
+    if method == 'sha256':
+        h = hashlib.sha256()
     
     for i in range(len(database)):
         for field in fields:

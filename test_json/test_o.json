@@ -1,0 +1,31 @@
+{
+    "params": [
+        {
+            "tool": "swapping",
+            "config": {
+                "method": "group_random_substitution"
+            },
+            "fields": [
+                "nome",
+                "sobrenome"
+            ]
+        }
+    ],
+    "database": [
+        {
+            "nome": "Wain",
+            "sobrenome": "Mitchard",
+            "numero" : 3
+        },
+        {
+            "nome": "Mariam",
+            "sobrenome": "Backson",
+            "numero" : 1
+        },
+        {
+            "nome": "Amalea",
+            "sobrenome": "Gambles",
+            "numero" : 2
+        }
+    ]
+}

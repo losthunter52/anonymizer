@@ -9,13 +9,11 @@ def encript_data(
     method = 'cryptocode'
 ):
 
-    match method:
+    if method == 'cryptocode':
+        cryptocode_method(data)
 
-        case 'cryptocode':
-            cryptocode_method(data)
-
-        case 'aes256':
-            aes256_method(data)
+    if method == 'aes256':
+        aes256_method(data)
 
     return data
 

@@ -4,11 +4,12 @@ def psedoanonymize_data(
     standard_value = "Object",
     replacements = []
 ):
-    match method:
-        case "single":
-            single(data, replacements)
-        case "full":
-            full(data, standard_value)
+    if method == "single":
+        single(data, replacements)
+
+    if method == "full":
+        full(data, standard_value)
+
     return data
 
 def single(data, replacements):
